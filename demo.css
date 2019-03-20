@@ -1,0 +1,177 @@
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+html, body, .wrapper{
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+.wrapper{
+    /* 元素居中对齐 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.wrapper ul{
+    display: flex;
+    width: 80%;
+    height: 80%;
+    /* border: 1px solid #fff; */
+    /* 图片间隔 */
+    justify-content: space-between;
+    /* 使图片向中间缩小 */
+    align-items: center;
+}
+.wrapper ul li{
+    width: 16%;
+    height: 100%;
+    /* border: 1px solid #fff; */
+    border-radius: 20px;
+    background-color: #333;
+    overflow: hidden;
+    transition: width 0.5s linear,height 0.5s linear 0.5s;
+}
+.wrapper-active ul li{ 
+    transition: height 0.5s linear,width 0.5s linear 0.5s;
+}
+.wrapper-active .title{
+    opacity: 0;
+}
+.wrapper ul li.active{
+    width: 100%;
+}
+.wrapper-active ul li:not(.active) {
+    width: 0;
+    height: 0;
+}
+.wrapper .inner{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* 小手 */
+    cursor: pointer;
+    transition: transform 0.5s linear;
+}
+.wrapper .inner .bg{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    /* 背景图片覆盖 */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.5;
+}
+/* 添加背景图片 */
+.wrapper ul li:nth-of-type(1) .bg{
+    background-image: url('./img/1.jpg');
+}
+.wrapper ul li:nth-of-type(2) .bg{
+    background-image: url('./img/2.jpg');
+}
+.wrapper ul li:nth-of-type(3) .bg{
+    background-image: url('./img/3.jpg');
+}
+.wrapper ul li:nth-of-type(4) .bg{
+    background-image: url('./img/4.jpg');
+}
+.wrapper ul li:nth-of-type(5) .bg{
+    background-image: url('./img/5.jpg');
+}
+.wrapper ul li:nth-of-type(6) .bg{
+    background-image: url('./img/6.jpg');
+}
+/* 动画延迟 */
+.wrapper ul li:nth-of-type(1) .inner{
+    transition-delay: 0;
+}
+.wrapper ul li:nth-of-type(2) .inner{
+    transition-delay: 0.1s;
+}
+.wrapper ul li:nth-of-type(3) .inner{
+    transition-delay: 0.2s;
+}
+.wrapper ul li:nth-of-type(4) .inner{
+    transition-delay: 0.3s;
+}
+.wrapper ul li:nth-of-type(5) .inner{
+    transition-delay: 0.4s;
+}
+.wrapper ul li:nth-of-type(6) .inner{
+    transition-delay: 0.5s;
+}
+.wrapper ul li .title{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #fff;
+    font-size: 24px;
+    font-weight: bolder;
+}
+.wrapper li:hover .bg{
+    opacity: 1;
+    transition: opacity 0.2s linear;
+}
+.wrapper li:hover .title{
+    font-size: 30px;
+    transition: font-size 0.2s linear;
+}
+.init li .inner{
+    /* 图片下移 */
+    transform: translateY(100%)
+}
+
+.wrapper ul li .dir{
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    height: 30px;
+    opacity: 0;
+}
+.wrapper ul li .dir .close{
+    position: absolute;
+    right: 50px;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    /* border: 1px solid #000; */
+}
+.wrapper ul li .dir .close::before,
+.wrapper ul li .dir .close::after{
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    height: 4px;
+    background-color: #fff;
+}
+.wrapper ul li .dir .close::before{
+    transform: rotate(45deg);
+}
+.wrapper ul li .dir .close::after{
+    transform: rotate(-45deg);
+}
+.wrapper-active ul li .dir{
+    opacity: 1;
+    transition: opacity 0.5s linear 1s;
+} 
+
+.active .inner .dir .close{
+    transform: rotate(360deg);
+    transition: all 0.5s linear 1s;
+}
+.active .inner .dir .close:hover{
+    transform: rotate(0deg);
+    transition: all 0.5s linear;
+}
+.active .inner .dir .header{
+    position: absolute;
+    top: 0;
+    left: 50px;
+    font-size: 24px;
+    font-weight: bolder;
+    color: #fff;
+}
